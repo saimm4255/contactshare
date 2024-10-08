@@ -1,0 +1,266 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+
+nav {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .left {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+nav .right {
+    display: flex;
+    gap: 20px;
+}
+
+
+.container {
+    padding: 20px;
+    margin: 20px auto;
+    width: 60%;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333; 
+    padding: 10px 20px;
+}
+
+nav .right a {
+    color: white; /* Button text color */
+    padding: 10px 15px; /* Padding around the buttons */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+nav .right a:hover {
+    background-color: #555; /* Background color on hover */
+}
+
+nav .right span {
+    color: white; /* Username text color */
+    margin-right: 10px; /* Space between username and time */
+}
+
+/* Add styles for the contact button */
+.add-contact-btn {
+    background-color: #28a745; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 15px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.add-contact-btn:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Styles for edit and delete buttons */
+.edit-btn, .delete-btn {
+    color: white; /* White text */
+    background-color: #007bff; /* Blue background */
+    padding: 8px 12px; /* Padding */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.edit-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.delete-btn {
+    background-color: #dc3545; /* Red background */
+}
+
+.delete-btn:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+/* Add icons next to buttons */
+.edit-btn i, .delete-btn i {
+    margin-right: 5px; /* Space between icon and text */
+}
+
+/* Styling form elements */
+form div {
+    margin-bottom: 10px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input[type="text"], form input[type="password"], form input[type="email"], form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+
+.login-form, .signup-form, .update-profile, .contact-detail {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+a {
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #0056b3;
+}
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #f8f9fa;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+}
+
+.profile-container {
+    display: flex; 
+    align-items: center; 
+}
+
+.profile-picture img {
+    width: 150px; 
+    height: 150px;
+    border-radius: 50%; 
+    object-fit: cover; 
+    margin-right: 20px; 
+}
+
+.update-profile-btn {
+    display: inline-block; 
+    margin-top: 20px; 
+    background-color: #007bff; 
+    color: white;
+    padding: 10px 15px; 
+    border-radius: 5px; 
+    text-decoration: none;
+    transition: background-color 0.3s; 
+}
+
+.update-profile-btn:hover {
+    background-color: #0056b3; 
+}
+
+.container {
+    padding: 20px;
+    background-color: #f9f9f9; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+}
+
+h2 {
+    margin-top: 20px;
+    color: #333; 
+}
+
+.contacts-list {
+    list-style: none; 
+    padding: 0;
+}
+
+.contacts-list li {
+    background: #fff; 
+    margin: 10px 0; 
+    padding: 10px;
+    border-radius: 5px; 
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.btn {
+    display: inline-flex; 
+    align-items: center; 
+    padding: 8px 12px;
+    border-radius: 5px; 
+    color: white; 
+    text-decoration: none; 
+    transition: background-color 0.3s; 
+}
+
+.edit-btn {
+    background-color: #007bff; 
+}
+
+.delete-btn {
+    background-color: #dc3545; 
+}
+
+.add-btn {
+    background-color: #28a745;
+    margin-top: 20px; 
+}
+
+.btn:hover {
+    opacity: 0.9; 
+}
+
+i {
+    margin-right: 2px; 
+}
+

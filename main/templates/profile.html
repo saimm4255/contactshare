@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="profile-detail">
+    <h2> Profile</h2>
+    <div class="profile-container">
+        <div class="profile-picture">
+            {% if user.profile.picture %}
+                <img src="{{ user.profile.picture.url }}" alt="Profile Picture">
+            {% else %}
+                <p>No profile picture available.</p>
+            {% endif %}
+        </div>
+        <div class="profile-info">
+            <p><strong>First Name:</strong> {{ user.first_name }}</p>
+            <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Timezone:</strong> {{ user.profile.timezone }}</p>
+        </div>
+    </div>
+    <a href="{% url 'update_profile' %}" class="update-profile-btn">Update Profile</a>
+</div>
+{% endblock %}
