@@ -15,6 +15,7 @@ urlpatterns = [
     path('contact/edit/<int:pk>/', views.edit_contact, name='edit_contact'),
     path('contact/delete/<int:pk>/', views.delete_contact, name='delete_contact'),
     path('access-denied/', views.access_denied, name='access_denied'),
+    path('stats/', views.stats, name='stats'), 
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

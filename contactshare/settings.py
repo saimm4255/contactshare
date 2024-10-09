@@ -47,10 +47,11 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'main.middleware.ContactViewTrackingMiddleware',
+    'main.middleware.AccessTimeRestrictionMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'main.middleware.AccessTimeRestrictionMiddleware',
-    'main.middleware.ContactViewTrackingMiddleware',
+
 ]
 
 ROOT_URLCONF = 'contactshare.urls'

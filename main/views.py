@@ -1,11 +1,38 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from .models import Contact, Profile
+from .models import Contact, Profile, ContactView
 from django.contrib.auth.models import User
 from .forms import SignUpForm, ProfileUpdateForm,  ContactForm
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseForbidden
+from django.db.models import Count
+from django.db.models.functions import Trunc
+
+def stats(request):
+    # Overall views of the user's contacts
+    overall_views = ContactView.objects.filter(contact__user=request.user).count()
+
+    # Contact with highest views
+    most_viewed_contact = Contact.objects.filter(user=request.user).annotate(view_count=Count('contactview')).order_by('-view_count').first()
+
+    # Contact with lowest views
+    least_viewed_contact = Contact.objects.filter(user=request.user).annotate(view_count=Count('contactview')).order_by('view_count').first()
+
+    # Views country wise (assuming 'REMOTE_ADDR' in metadata contains IP or country information)
+    views_by_country = ContactView.objects.values('metadata__REMOTE_ADDR').annotate(total_views=Count('id')).order_by('-total_views')
+
+    # Contacts list ordered by view count
+    contacts_ordered_by_views = Contact.objects.filter(user=request.user).annotate(view_count=Count('contactview')).order_by('-view_count')
+
+    context = {
+        'overall_views': overall_views,
+        'most_viewed_contact': most_viewed_contact,
+        'least_viewed_contact': least_viewed_contact,
+        'views_by_country': views_by_country,
+        'contacts_ordered_by_views': contacts_ordered_by_views,
+    }
+    return render(request, 'stats.html', context)
 
 
 def access_denied(request):
@@ -89,5 +116,11 @@ def update_profile(request):
 # Contact Detail
 @login_required
 def contact_detail(request, contact_id):
-    contact = Contact.active_objects.get(id=contact_id)
-    return render(request, 'contact_detail.html', {'contact': contact})
+    contact = get_object_or_404(Contact, id=contact_id)
+    total_views = ContactView.objects.filter(contact=contact).count()
+
+    context = {
+        'contact': contact,
+        'total_views': total_views, 
+    }
+    return render(request, 'contact_detail.html', context)

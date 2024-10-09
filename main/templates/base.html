@@ -19,8 +19,9 @@
                 <a href="{% url 'view_profile' %}">
                     <i class="fas fa-user"></i> {{ user.username }}
                 </a> 
+                <a href="{% url 'stats' %}"><i class="fas fa-chart-bar"></i> Statistics</a> <!-- Added Statistics button -->
+                
                 <span>{% display_time_in_timezone current_time user.profile.timezone %}</span>
-               
  
                 <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
             {% else %}
