@@ -10,19 +10,18 @@ from django.db.models import Count
 from django.db.models.functions import Trunc
 
 def stats(request):
-    # Overall views of the user's contacts
+   
     overall_views = ContactView.objects.filter(contact__user=request.user).count()
 
-    # Contact with highest views
     most_viewed_contact = Contact.objects.filter(user=request.user).annotate(view_count=Count('contactview')).order_by('-view_count').first()
 
-    # Contact with lowest views
+ 
     least_viewed_contact = Contact.objects.filter(user=request.user).annotate(view_count=Count('contactview')).order_by('view_count').first()
 
-    # Views country wise (assuming 'REMOTE_ADDR' in metadata contains IP or country information)
+  
     views_by_country = ContactView.objects.values('metadata__REMOTE_ADDR').annotate(total_views=Count('id')).order_by('-total_views')
 
-    # Contacts list ordered by view count
+
     contacts_ordered_by_views = Contact.objects.filter(user=request.user).annotate(view_count=Count('contactview')).order_by('-view_count')
 
     context = {

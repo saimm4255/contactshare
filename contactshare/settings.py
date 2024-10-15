@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'django.contrib.postgres',
 ]
 
 MIDDLEWARE = [
@@ -84,10 +85,15 @@ WSGI_APPLICATION = 'contactshare.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',  
+        'USER': 'postgres.gxeidrimzpmpuruifklr',  
+        'PASSWORD': 'Saimm,4255@gmail.com',  
+        'HOST': 'aws-0-ap-southeast-1.pooler.supabase.com',  
+        'PORT': '6543',  
     }
 }
+
 
 
 # Password validation
