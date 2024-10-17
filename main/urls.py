@@ -3,8 +3,11 @@ from django.contrib.auth import views as auth_views
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from .forms import CustomAuthenticationForm
+
 urlpatterns = [
-    path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
+    path('accounts/login/', auth_views.LoginView.as_view(authentication_form=CustomAuthenticationForm), name='login'),
+    path('signup/', views.signup, name='signup'),
     path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('signup/', views.signup, name='signup'),
     path('', views.home, name='home'),
@@ -14,7 +17,7 @@ urlpatterns = [
     path('add-contact/', views.add_contact, name='add_contact'),
     path('contact/edit/<int:pk>/', views.edit_contact, name='edit_contact'),
     path('contact/delete/<int:pk>/', views.delete_contact, name='delete_contact'),
-    path('access-denied/', views.access_denied, name='access_denied'),
+
     path('stats/', views.stats, name='stats'), 
 ]
 if settings.DEBUG:

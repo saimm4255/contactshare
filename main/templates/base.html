@@ -17,7 +17,7 @@
                 <a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>
                 <a href="{% url 'update_profile' %}"><i class="fas fa-user-edit"></i> Update Profile</a>
                 <a href="{% url 'view_profile' %}">
-                    <i class="fas fa-user"></i> {{ user.username }}
+                    <i class="fas fa-user"></i> {{ user.email }}
                 </a> 
                 <a href="{% url 'stats' %}"><i class="fas fa-chart-bar"></i> Statistics</a> <!-- Added Statistics button -->
                 
