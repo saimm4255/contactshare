@@ -37,7 +37,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         return self.email
 
 
-# Profile model
+
 class Profile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     timezone = models.CharField(max_length=100, default='UTC')
@@ -56,7 +56,7 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
-# Contact model
+
 class Contact(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
@@ -75,7 +75,7 @@ class Contact(models.Model):
     objects = models.Manager()
     active_objects = ActiveManager()
 
-# App access time model
+
 class AppAccessTime(models.Model):
     from_time = models.TimeField()
     to_time = models.TimeField()
@@ -87,7 +87,7 @@ class AppAccessTime(models.Model):
     def __str__(self):
         return f"Access Time from {self.from_time} to {self.to_time}"
 
-# ContactView model
+
 class ContactView(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     contact = models.ForeignKey(Contact, on_delete=models.CASCADE)
