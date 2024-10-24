@@ -1,3 +1,4 @@
+# views.py
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count, Avg
@@ -6,8 +7,6 @@ from .models import Contact, Profile, ContactView, CustomUser
 from .serializers import CustomUserSerializer, ProfileSerializer, ContactSerializer
 from .forms import SignUpForm, ProfileUpdateForm, ContactForm
 from .decorators import log_request_metadata
-
-
 
 class CustomUserViewSet(viewsets.ModelViewSet):
     queryset = CustomUser.objects.all()
