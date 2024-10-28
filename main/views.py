@@ -1,4 +1,4 @@
-# views.py
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count, Avg
@@ -7,22 +7,26 @@ from .models import Contact, Profile, ContactView, CustomUser
 from .serializers import CustomUserSerializer, ProfileSerializer, ContactSerializer
 from .forms import SignUpForm, ProfileUpdateForm, ContactForm
 from .decorators import log_request_metadata
+from .authentication import CustomTokenAuthentication
+from .permissions import IsOwnerOrReadOnly
 
 class CustomUserViewSet(viewsets.ModelViewSet):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [CustomTokenAuthentication]
+    permission_classes = [IsOwnerOrReadOnly]
 
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [CustomTokenAuthentication]
+    permission_classes = [IsOwnerOrReadOnly]
 
 class ContactViewSet(viewsets.ModelViewSet):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
+    authentication_classes = [CustomTokenAuthentication]
+    permission_classes = [IsOwnerOrReadOnly]
 
 
 def signup(request):
